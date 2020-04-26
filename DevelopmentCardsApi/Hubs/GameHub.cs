@@ -43,7 +43,7 @@ namespace DevelopmentCardsApi.Hubs
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"Game-{gameSubscription.GameId}");
 
-            _playerConnectionManager.RemovePlayerConnection(gameSubscription.PlayerToken, Context.ConnectionId);
+            _playerConnectionManager.RemovePlayerConnection(Context.ConnectionId);
 
             await Clients.Caller.SendAsync("Message", "Successfully Unsubscribed");
         }

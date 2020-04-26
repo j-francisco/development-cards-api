@@ -234,6 +234,11 @@ namespace DevelopmentCardsApi.Services
         {
             var game = await GetGame(gameId);
 
+            if (game == null)
+            {
+                return;
+            }
+
             var otherPlayers = game.Players.Where(p => p.Id != currentPlayerId);
             foreach (var otherPlayer in otherPlayers)
             {
